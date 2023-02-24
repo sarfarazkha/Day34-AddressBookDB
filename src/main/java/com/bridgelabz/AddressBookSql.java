@@ -25,8 +25,7 @@ public class AddressBookSql {
             Statement statement=con.createStatement();
 //            statement.execute("delete from addressBook where firstname='Pavan'");
 
-            ResultSet resultSet =statement.executeQuery("select * from addressBook where " +
-                    "city='Mumbai'");
+            ResultSet resultSet =statement.executeQuery("select count(*) from addressBook;");
             while(resultSet.next()){
                 System.out.println("firstname:"+resultSet.getString("firstname"));
                 System.out.println("lastname:"+resultSet.getString("lastname"));
