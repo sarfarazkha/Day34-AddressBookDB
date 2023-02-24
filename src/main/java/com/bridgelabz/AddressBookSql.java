@@ -10,7 +10,7 @@ public class AddressBookSql {
     public static void main(String[] args) {
         String jdbcURL = "jdbc:mysql://127.0.0.1:3306/addressbookServices?useSSL=false";
         String username = "root";
-        String password = "Amirkhan$2000";
+        String password = "123456789";
         Connection con;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -23,10 +23,13 @@ public class AddressBookSql {
             con = DriverManager.getConnection(jdbcURL, username, password);
             System.out.println("connection done successful!!" + con);
             Statement statement=con.createStatement();
-            statement.executeUpdate("create table addressBook(firstname varchar(30),lastname varchar(40),\n" +
-                    "address varchar(100),city varchar(30),state varchar(40),zip int,phoneNumber varchar(30),\n" +
-                    "email varchar(60)) ");
-            ResultSet resultSet =statement.executeQuery("desc addressBook");
+            statement.executeUpdate("insert into addressBook(firstname,lastname,address,city,state,zip,phonenumber,email) \n" +
+                    "values ('sarfaraz','khan','Hosa oni','Mumbai','Maharashtra',58009,'8217468990','praju@123'),\n" +
+                    "('Paru','Hanasi','Gandhi nagar','Dharwad','karanataka',58001,'8277498990','paru@123'),\n" +
+                    "('chinnu','Hanasi','Vidya Giri','Pune','Maharashtra',58007,'7797468990','chinnu@123'),\n" +
+                    "('Pratham','Hanasi','Hosa oni','Manali','Himachal Pradesh',58008,'8217468990','pratham@123'),\n" +
+                    "('Paarth','Hanasi','Nekar oni','Dharwad','Karanataka',58006,'9997468990','paarth@123') ");
+            ResultSet resultSet =statement.executeQuery("select * from addressBook");
             while(resultSet.next()){
                 System.out.println("firstname:"+resultSet.getString("firstname"));
                 System.out.println("lastname:"+resultSet.getString("lastname"));
@@ -36,7 +39,6 @@ public class AddressBookSql {
                 System.out.println("zip:"+resultSet.getInt("zip"));
                 System.out.println("phoneNumber:"+resultSet.getString("phoneNumber"));
                 System.out.println("email:"+resultSet.getString("email"));
-                System.out.println("Type:"+resultSet.getString("Type"));
             }
         } catch (Exception e) {
 
