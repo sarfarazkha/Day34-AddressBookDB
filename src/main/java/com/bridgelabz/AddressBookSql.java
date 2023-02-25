@@ -10,7 +10,7 @@ public class AddressBookSql {
     public static void main(String[] args) {
         String jdbcURL = "jdbc:mysql://127.0.0.1:3306/addressbookServices?useSSL=false";
         String username = "root";
-        String password = "Amirkhan$2000";
+        String password = "123456789";
         Connection con;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
